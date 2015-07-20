@@ -5,10 +5,10 @@ from models import developer, attendLog
 import datetime
 
 def present():
-    now = datetime.datetime.now()
-    if now.hour <= 12:
+    hour = int(datetime.datetime.now().strftime("%H"))
+    if 6 < hour <= 12:
         return 'morning'
-    elif now.hour <= 18:
+    elif 12 < hour <= 18:
         return 'afternoon'
     else:
         return 'evening'
@@ -19,34 +19,44 @@ def status(str = ''):
         is_able[str] = ''
     return is_able
 
-def clock_in(request, name, button):
-    dev = developer.objects.get(name=name)
+def clock_able(dev, clock_time):
     try:
         log = dev.attendlog_set.get(date=datetime.date.today())
     except attendLog.DoesNotExist:
-        attendLog.objects.create(date=datetime.date.today(), person=dev)
-        log = dev.attendlog_set.get(date=datetime.date.today())
+        log = attendLog.objects.create(date=datetime.date.today(), person=dev)
+    if clock_time == 'morning' and log.morning is None:
+        return True
+    elif clock_time == 'afternoon' and log.afternoon is None:
+        return True
+    elif clock_time == 'evening' and log.evening is None:
+        return True
+    return False
+
+def clock_in(dev, clock_time):
+    log = dev.attendlog_set.get(date=datetime.date.today())
     now = datetime.datetime.now().time()
-    if button == 'morning':
+    if clock_time == 'morning':
         log.morning = now
-    elif button == 'afternoon':
+    elif clock_time == 'afternoon':
         log.afternoon = now
     else:
         log.evening = now
     log.save()
 
-def profile(request, name):
-    time_status = status(present())
-    if request.method == 'POST':
-        button = request.POST.get('now', '')
-        if time_status[button] == '':
-            clock_in(request, name, button)
-            time_status[button] = 'disabled'
+def profile(request, dev_name):
+    dev = developer.objects.get(name=dev_name)
+    if clock_able(dev, present()):
+        time_status = status(present())
+        if request.method == 'POST' and request.POST.get('now', '') == present():
+            clock_in(dev, present())
+            time_status = status()
+    else:
+        time_status = status()
     info = {
-        'name': name,
+        'name': dev_name,
         'time':present(),
         'status': time_status,
-        'logs': developer.objects.get(name=name).attendlog_set.all(),
+        'logs': dev.attendlog_set.all(),
     }
     return render_to_response('profile.html', RequestContext(request, info))
 

@@ -46,7 +46,7 @@
           <h1 class="page-header text-success">Good {{ time }}, {{ name }}.</h1>
 
         <div class="row">
-            <form action="#" method = 'POST' class="col-sm-4">
+            <form action="" method = 'POST' class="col-sm-4">
                 {% csrf_token %}
                 <div style='display:none'><input type='hidden' name='now' value='morning'/></div>
               <div class="row placeholders">
@@ -58,7 +58,7 @@
               </div>
             </form>
 
-            <form action="#" method = 'POST' class="col-sm-4">
+            <form action="" method = 'POST' class="col-sm-4">
                 {% csrf_token %}
                 <div style='display:none'><input type='hidden' name='now' value='afternoon'/></div>
                 <div class="row placeholders">
@@ -70,7 +70,7 @@
                 </div>
             </form>
 
-            <form action="#" method = 'POST' class="col-sm-4">
+            <form action="" method = 'POST' class="col-sm-4">
                 {% csrf_token %}
                 <div style='display:none'><input type='hidden' name='now' value='evening'/></div>
                 <div class="row placeholders">
