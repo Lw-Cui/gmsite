@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'lib/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/profile.css'%}">
+    <title>Geek Mooc</title>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="" class="navbar-brand"><strong>Gm</strong> developer</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+                <a href="" class="btn btn-danger btn-sm navbar-btn navbar-right hidden-xs">log out</a>
+                <div class="profile navbar-right">
+                    <p class="navbar-text">hello <a href="" class="navbar-link">{{ name }}</a></p>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="jumbotron">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+            <li><a href="">My status</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="#">About me</a></li>
+            <li><a href="#">Settings</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header text-success">Good {{ time }}, {{ name }}.</h1>
+
+        <div class="row">
+            <form action="#" method = 'POST' class="col-sm-4">
+                {% csrf_token %}
+                <div style='display:none'><input type='hidden' name='now' value='morning'/></div>
+              <div class="row placeholders">
+                <div class="col-sm-10 placeholder">
+                  <h3 class="text-muted">Morning(8:30~12:00)</h3>
+                  <button class="btn btn-primary btn-lg btn-block {{ status.morning }}"
+                          type="submit">Clock in</button>
+                </div>
+              </div>
+            </form>
+
+            <form action="#" method = 'POST' class="col-sm-4">
+                {% csrf_token %}
+                <div style='display:none'><input type='hidden' name='now' value='afternoon'/></div>
+                <div class="row placeholders">
+                    <div class="col-sm-10 placeholder">
+                      <h3 class="text-primary">Afternoon(2:30~6:00)</h3>
+                      <button class="btn btn-primary btn-lg btn-block {{ status.afternoon }}"
+                              type="submit">Clock in</button>
+                    </div>
+                </div>
+            </form>
+
+            <form action="#" method = 'POST' class="col-sm-4">
+                {% csrf_token %}
+                <div style='display:none'><input type='hidden' name='now' value='evening'/></div>
+                <div class="row placeholders">
+                    <div class="col-sm-10 placeholder">
+                      <h3 class="text-info">Evening(7:00~9:00)</h3>
+                      <button class="btn btn-primary btn-lg btn-block {{ status.evening }}"
+                              type="submit">Clock in</button>
+                    </div>
+                </div>
+            </form>
+
+          <h2 class="sub-header">Attendance sheet</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Morning</th>
+                  <th>Afternoon</th>
+                  <th>Evening</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for log in logs %}
+                <tr>
+                    <td>{{ log.date|date:"b d, Y" }}</td>
+                    <td>{{ log.morning }}</td>
+                    <td>{{ log.afternoon }}</td>
+                    <td>{{ log.evening }}</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="{% static 'lib/jquery-2.1.4.min.js' %}"></script>
+    <script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>
