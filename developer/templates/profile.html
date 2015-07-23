@@ -21,9 +21,9 @@
                 <a href="" class="navbar-brand"><strong>Gm</strong> developer</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
-                <a href="" class="btn btn-danger btn-sm navbar-btn navbar-right hidden-xs">log out</a>
+                <a href="" class="btn btn-danger btn-sm navbar-btn navbar-right hidden-xs" id="logout">log out</a>
                 <div class="profile navbar-right">
-                    <p class="navbar-text">hello <a href="" class="navbar-link">{{ name }}</a></p>
+                    <p class="navbar-text" id="greet">hello <a href="" class="navbar-link">{{ name }}</a></p>
                 </div>
             </div>
         </div>
@@ -45,11 +45,11 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header text-success">Good {{ time }}, {{ name }}.</h1>
 
-        <div class="row">
-            <form action="" method = 'POST' class="col-sm-4">
+        <div class="row placeholders">
+            <form action="" method = 'POST' class="col-sm-4 placeholder">
                 {% csrf_token %}
                 <div style='display:none'><input type='hidden' name='now' value='morning'/></div>
-              <div class="row placeholders">
+              <div class="row placeholder">
                 <div class="col-sm-10 placeholder">
                   <h3 class="text-muted">Morning(8:30~12:00)</h3>
                   <button class="btn btn-primary btn-lg btn-block {{ status.morning }}"
@@ -58,7 +58,7 @@
               </div>
             </form>
 
-            <form action="" method = 'POST' class="col-sm-4">
+            <form action="" method = 'POST' class="col-sm-4 placeholder">
                 {% csrf_token %}
                 <div style='display:none'><input type='hidden' name='now' value='afternoon'/></div>
                 <div class="row placeholders">
@@ -70,7 +70,7 @@
                 </div>
             </form>
 
-            <form action="" method = 'POST' class="col-sm-4">
+            <form action="" method = 'POST' class="col-sm-4 placeholder">
                 {% csrf_token %}
                 <div style='display:none'><input type='hidden' name='now' value='evening'/></div>
                 <div class="row placeholders">
@@ -81,10 +81,10 @@
                     </div>
                 </div>
             </form>
-
-          <h2 class="sub-header">Attendance sheet</h2>
+        </div>
+      <h2 class="sub-header">Attendance sheet</h2>
           <div class="table-responsive">
-            <table class="table table-striped">
+          <table class="table table-striped">
               <thead>
                 <tr>
                   <th>Date</th>
@@ -93,7 +93,7 @@
                   <th>Evening</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="sheet" style="display: none">
               {% for log in logs %}
                 <tr>
                     <td>{{ log.date|date:"b d, Y" }}</td>
@@ -109,8 +109,8 @@
       </div>
     </div>
 
-
     <script src="{% static 'lib/jquery-2.1.4.min.js' %}"></script>
+    <script src="{% static 'lib/jQuery-func.js' %}"></script>
     <script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
 </html>
