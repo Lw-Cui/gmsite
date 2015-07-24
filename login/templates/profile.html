@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no,
+        initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>developer profile</title>
+
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+<body background="{% static 'img/home2.jpg' %}">
+    <div class="TimeAndGreet">
+        <h1 id="time" class="time"></h1>
+        <h2 class="greet">Good evening {{ username }}!</h2>
+    </div>
+
+
+    <script src="{% static 'lib/jquery-2.1.4.min.js' %}"></script>
+    <script src="{% static 'js/showTime.js' %}"></script>
+</body>
+</html>
