@@ -35,7 +35,7 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="">My status</a></li>
+            <li><a href="">All Sheet</a></li>
           </ul>
           <ul class="nav nav-sidebar">
             <li><a href="#">About me</a></li>
@@ -53,7 +53,7 @@
                 <div class="col-sm-10 placeholder">
                   <h3 class="text-muted">Morning(8:30~12:00)</h3>
                   <button class="btn btn-primary btn-lg btn-block {{ status.morning }}"
-                          type="submit">Clock in</button>
+                          type="submit" id="morning">Clock in</button>
                 </div>
               </div>
             </form>
@@ -65,7 +65,7 @@
                     <div class="col-sm-10 placeholder">
                       <h3 class="text-primary">Afternoon(2:30~6:00)</h3>
                       <button class="btn btn-primary btn-lg btn-block {{ status.afternoon }}"
-                              type="submit">Clock in</button>
+                              type="submit" id="afternoon">Clock in</button>
                     </div>
                 </div>
             </form>
@@ -77,12 +77,12 @@
                     <div class="col-sm-10 placeholder">
                       <h3 class="text-info">Evening(7:00~9:00)</h3>
                       <button class="btn btn-primary btn-lg btn-block {{ status.evening }}"
-                              type="submit">Clock in</button>
+                              type="submit" id="evening">Clock in</button>
                     </div>
                 </div>
             </form>
         </div>
-      <h2 class="sub-header">Attendance sheet</h2>
+      <h2 class="sub-header">Last Week Record</h2>
           <div class="table-responsive">
           <table class="table table-striped">
               <thead>

@@ -3,6 +3,7 @@ from django.template import RequestContext
 from forms import dev_info
 from models import developer, attendLog
 import datetime
+import json
 
 def present():
     hour = int(datetime.datetime.now().strftime("%H"))
@@ -56,7 +57,7 @@ def profile(request, dev_name):
         'name': dev_name,
         'time':present(),
         'status': time_status,
-        'logs': dev.attendlog_set.all(),
+        'logs': dev.attendlog_set.all()[0:7],
     }
     return render_to_response('profile.html', RequestContext(request, info))
 
@@ -70,3 +71,6 @@ def log_in(request):
             return HttpResponseRedirect('/profile/' + str(name))
     info = {'form': dev_info()}
     return render_to_response('log_in.html', RequestContext(request, info))
+
+def attend(request):
+    pass

@@ -4,4 +4,5 @@ from views import profile
 urlpatterns = patterns(
     'developer.views',
     url(r'^profile/(?P<dev_name>\w+)/', 'profile'),
+    url(r'attend/', 'attend'),
 )
