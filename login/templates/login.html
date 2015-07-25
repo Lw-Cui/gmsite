@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
 </head>
 <body background="{% static 'img/home2.jpg' %}">
-    <h1 id="title" class="title">welcome to <b>Geek Mooc</b></h1>
+    <h1 class="title" id="title"><span id="welcome">welcome to </span><b>Geek Mooc</b></h1>
     <div class="container">
         <form class="form-signin" method="post">
             {% csrf_token %}
@@ -29,5 +29,6 @@
 
     <script src="{% static 'lib/jquery-2.1.4.min.js' %}"></script>
     <script src="{% static 'js/login.js' %}"></script>
+    <script src="{% static 'js/welcome.js' %}"></script>
 </body>
 </html>
