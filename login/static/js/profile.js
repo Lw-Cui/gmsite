@@ -34,6 +34,7 @@ $(document).ready(function() {
                         $("#log").append(append);
                     }
                 });
+            /*Should be changed to fix giant screen such as Mac*/
             $('body').animate({'scrollTop': $(window).scrollTop() + 768}, 'slow');
             //$("body").animate({marginTop: '-768px'}, 'slow');
         })
