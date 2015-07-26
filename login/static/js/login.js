@@ -9,7 +9,7 @@ $(document).ready(function() {
             $(this).fadeTo("fast", 1);
         })
         .mouseleave(function () {
-            $(this).fadeTo("slow", 0.7);
+            $(this).fadeTo("slow", 0.8);
         });
 
     $("input")

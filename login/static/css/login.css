@@ -1,13 +1,15 @@
 body {
-  padding-top: 170px;
+  padding-top: 160px;
   padding-bottom: 40px;
 }
 
 .title {
     color: white;
     font-size: 60px;
-    opacity: 0.7;
+    opacity: 0.8;
     text-align: center;
+    margin-right: 380px;
+    margin-bottom: 100px;
 }
 
 .form-signin {

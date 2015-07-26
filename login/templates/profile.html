@@ -14,10 +14,13 @@
 <body background="{% static 'img/home2.jpg' %}">
     <div class="TimeAndGreet">
         <h1 id="time" class="time"></h1>
-        <h2 class="greet">Good evening {{ username }}!</h2>
-        <button class="clockIn">CLOCK IN</button>
+        <h2 class="greet">Good <span id="period"></span> {{ username }}!</h2>
+        <button class="clockIn" id="clockIn">CLOCK IN</button>
+        <h1 id="attend" style="display: none; color: white;"></h1>
     </div>
     <script src="{% static 'lib/jquery-2.1.4.min.js' %}"></script>
+    <script src="{% static 'lib/jquery-ui.min.js' %}"></script>
     <script src="{% static 'js/showTime.js' %}"></script>
+    <script src="{% static 'js/profile.js' %}"></script>
 </body>
 </html>

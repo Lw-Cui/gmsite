@@ -22,15 +22,17 @@ body {
     margin-top: 0;
 }
 .clockIn {
-    color: white;
+    color: #19ddff;
     background-color: transparent;
     margin-top: 62px;
     line-height: 30px;
     letter-spacing: -1px;
+    border-color: #55bdff;
     border-style: solid;
     border-width: thin;
     font-weight: 100;
     font-size: 20px;
     width: 158px;
+    height: 40px;
     border-radius: 6px;
 }

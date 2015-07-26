@@ -4,4 +4,5 @@ from login import views
 urlpatterns = patterns('',
                        url(r'^$', views.login),
                        url(r'^profile/$', views.profile),
+                       url(r'^clock_in/$', views.clockIn),
                        )
