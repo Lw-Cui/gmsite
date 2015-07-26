@@ -8,7 +8,7 @@
     <title>developer profile</title>
 
     {% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'lib/bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
 </head>
 <body>
@@ -17,11 +17,22 @@
             <h1 id="time" class="time"></h1>
             <h2 class="greet">Good <span id="period"></span> {{ username }}!</h2>
             <button class="clockIn" id="clockIn">CLOCK IN</button>
-            <h1 id="attend" style="display: none; color: white;"></h1>
         </div>
     </div>
     <div class="sheet">
-
+        <table class="table table-striped attend" id="attend">
+            <caption class="caption"><b>ATTENDANCE SHEET</b></caption>
+            <thead class="head">
+            <tr>
+                <td>Date</td>
+                <td>Morning</td>
+                <td>Afternoon</td>
+                <td>Evening</td>
+            </tr>
+            </thead>
+            <tbody class="body" id="log">
+            </tbody>
+        </table>
     </div>
     <script src="{% static 'lib/jquery-2.1.4.min.js' %}"></script>
     <script src="{% static 'lib/jquery-ui.min.js' %}"></script>

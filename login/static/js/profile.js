@@ -20,11 +20,22 @@ $(document).ready(function() {
                 .text("CLOCKED")
                 .css("color", "#19ddff");
             $.post("/clock_in/", {
-                period: period(),
+                period: period()
                 }, function(data, status) {
-                    var obj = JSON.parse(data)
-                    //$("#attend").text(obj[period()]).slideDown(2000);
+                    var obj = JSON.parse(data);
+                    $("#log").empty();
+                    for(var index in obj) {
+                        var append = '<tr>';
+                        append += '<td>' + obj[index]["date"] + '</td>';
+                        append += '<td>' + obj[index]["morning"] + '</td>';
+                        append += '<td>' + obj[index]["afternoon"] + '</td>';
+                        append += '<td>' + obj[index]["evening"] + '</td>';
+                        append += '</tr>';
+                        $("#log").append(append);
+                    }
                 });
+            $('body').animate({'scrollTop': $(window).scrollTop() + 768}, 'slow');
+            //$("body").animate({marginTop: '-768px'}, 'slow');
         })
         .mouseenter(function() {
             $(this).animate({backgroundColor: 'white'}, 'fast').promise().done(function() {

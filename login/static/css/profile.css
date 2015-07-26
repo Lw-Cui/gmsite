@@ -6,14 +6,40 @@
     text-align: center;
     background-image: url(/static/img/home2.jpg);
     background-size: cover;
+    height: 768px;
     margin:0;
     padding:0;
 }
 
+.attend {
+    opacity: 0.6;
+}
+
+.head {
+    font-size: 25px;
+    font-weight: 500;
+    color: #26ff75;
+    line-height: 10;
+    letter-spacing: 2px;
+}
+
+.body {
+    color: #0e74ff;
+    font-size: 18px;
+}
+
+.caption {
+    text-align: center;
+    font-size: 35px;
+}
+
 .sheet {
     text-align: center;
-    background-image: url(/static/img/home.jpg);
+    background-image: url(/static/img/lake.jpg);
+    height: 768px;
     background-size: cover;
+    margin:0;
+    padding:0;
 }
 
 .time {
