@@ -20,9 +20,11 @@
 ![](/sheet.png) 
 
 ##使用##
-测试时可以使用`sqlite3`来生成相应的数据库：
+测试时可以使用`sqlite3`来生成相应的数据库，并使用`south`进行迁移：
 ```
+python manage.py schemamigration login --init
 python manage.py syncdb
+python manage.py migrate login
 ```
 
 ##实现##
@@ -32,6 +34,7 @@ python manage.py syncdb
 * ajax支持：`jQuery`
 * 后台：`Django`
 * 数据库：`sqlite3`
+* 数据库迁移：`south`
 
 ##写在最后##
 对于*giant screen*的使用需要调整*.css*和*.js*来使得图片占满一屏。目前可以在*height: 768px*达到良好的效果。具体参见注释。
