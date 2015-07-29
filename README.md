@@ -22,7 +22,7 @@
 ##使用##
 测试时可以使用`sqlite3`来生成相应的数据库，并使用`south`进行迁移：
 ```
-python manage.py schemamigration login --init
+python manage.py schemamigration login --initial
 python manage.py syncdb
 python manage.py migrate login
 ```
